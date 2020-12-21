@@ -1,4 +1,4 @@
-from xml.dom.minidom import parse 
+"""from xml.dom.minidom import parse 
 import xml.dom.minidom
 
 
@@ -22,4 +22,29 @@ for obra in livro:
     data = obra.getAttribute("publish_date")[0]
     print("data: %s" % data.childNodes[0].data)
     descr = obra.getAttribute("description")[0]
-    print("descrição: %s" % descr.childNodes[0].data)
+    print("descrição: %s" % descr.childNodes[0].data)*/"""
+
+import xml.dom.minidom
+
+def main():
+    # use the parse() function to load and parse an XML file
+    doc = xml.dom.minidom.parse("C:\\xampp\\htdocs\\IS_TP1_PHP\\REST\\DOM\\files\\books.xml")
+
+    # print out the document node and the name of the first child tag
+    print (doc.nodeName)
+    print (doc.firstChild.tagName)
+    # get a list of XML tags from the document and print each one
+    livro = doc.getElementsByTagName("book")
+    print ("%d livro:" % livro.length)
+    for skill in livro:
+        print (skill.getAttribute("author"))
+        print (skill.getAttribute("title"))
+        print (skill.getAttribute("genre"))
+        print (skill.getAttribute("price"))
+        print (skill.getAttribute("publish_date"))
+        print (skill.getAttribute("description"))
+
+    
+
+if __name__ == "__main__":
+    main()
